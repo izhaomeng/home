@@ -1075,6 +1075,9 @@
   section.skills .graph-skill li.fig6 {
     left: 200px;
   }
+  section.skills .graph-skill li.fig7 {
+    left: 240px;
+  }
   section.skills .fig4 {
     background-color: #adff00;
   }
@@ -1092,6 +1095,9 @@
   }
   section.skills .fig6 {
     background-color: #856daf;
+  }
+  section.skills .fig7 {
+    background-color: #747474;
   }
   section.skills .graph-title {
     width: 90px;

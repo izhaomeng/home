@@ -3,8 +3,9 @@
 <head>
 	<meta charset="UTF-8" />
 	<!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" /><![endif]-->
-	<title>Google Map</title>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<title>A Map</title>
+
+	<script src="http://webapi.amap.com/maps?v=1.3&key=b2894fecb1a41c00e5a3b2e119a5f2da&callback=init"></script>
 	<style type="text/css">
 		html,body{
 			width: 100%;
@@ -20,32 +21,33 @@
 </head>
 <body>
 	<div id="map"></div>
-	<script type="text/javascript">
-		/*	Google Maps
-		/* ---------------------------------------------------------------------- */
-		var point = new google.maps.LatLng(36.114646,-115.172816);
 
-		var myMapOptions = {
-			zoom: 14,
-			disableDefaultUI: false,
-			mapTypeControl: true,
-			zoomControl: true,
-			center: point,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-		var map = new google.maps.Map(document.getElementById("map"), myMapOptions);
-		var image = new google.maps.MarkerImage(
-			'images/map-marker-orange.png',
-			new google.maps.Size(128, 128),
-			new google.maps.Point(0, 0),
-			new google.maps.Point(64, 128)
-		);
-		var marker = new google.maps.Marker({
-			draggable: false,
-			icon: image,
-			map: map,
-			position: point
+  <script type="text/javascript">
+		AMapUI.loadUI(['overlay/AwesomeMarker'], function(AwesomeMarker) {
+			new AwesomeMarker({
+			       iconStyle: {
+			            src: 'images/map-marker-orange.png',
+			            style: {
+			                width: '128px',
+			                height: '128px'
+			            }
+			     }
+			});
 		});
-	</script>
+
+    window.init = function(){
+        var map = new AMap.Map('map', {
+           center:[36.114646,-115.172816],
+           zoom:11
+        });
+				AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.OverView'],
+           function(){
+			        map.addControl(new AMap.ToolBar());
+			        map.addControl(new AMap.Scale());
+			        map.addControl(new AMap.OverView({isOpen:true}));
+           });
+    }
+
+  </script>
 </body>
 </html>
