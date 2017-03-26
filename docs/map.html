@@ -40,6 +40,14 @@
            center:[36.114646,-115.172816],
            zoom:11
         });
+
+				var marker = new AMap.Marker({
+						position: [116.39,39.9],
+						title: "M's Home",
+						icon: "images/map-marker-orange.png",
+						map: map
+			    });
+
 				AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.OverView'],
            function(){
 			        map.addControl(new AMap.ToolBar());
